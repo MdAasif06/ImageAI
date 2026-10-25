@@ -10,13 +10,17 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+// app.use((req, res, next) => {
+//   console.log("Request received:", req.method, req.url);
+//   next();
+// });
 
 await connetDB();
 
 app.use("/api/user", userRouter);
 app.use("/api/image", imageRouter);
 app.get("/", (req, res) => {
-  res.send("api working");
+  res.send("api working is fine");
 });
 
 app.listen(PORT, () => {

@@ -11,7 +11,10 @@ const AppContextProvider = (props) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [credit, setCredit] = useState(false);
 
-  const backendUrl = 'https://imageai-4x0z.onrender.com';
+  // const backendUrl = 'https://imageai-4x0z.onrender.com';
+  
+const backendUrl = "http://localhost:4000";
+
 
   const Navigate = useNavigate();
 

@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+    // console.log("Register API called:", email);
     if (!name || !email || !password) {
       return res.json({ success: false, messsage: "Missing details" });
     }
@@ -20,6 +21,8 @@ const registerUser = async (req, res) => {
 
     const newUser = new userModel(userData);
     const user = await newUser.save();
+    // console.log("User saved:", user._id);
+    // console.log("Database:", userModel.db.name);
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     res.json({ success: true, token, user: { name: user.name } });
@@ -66,4 +69,4 @@ const userCredits = async (req, res) => {
   }
 };
 
-export { registerUser, loginUser ,userCredits};
+export { registerUser, loginUser, userCredits };
